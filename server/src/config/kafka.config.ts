@@ -1,13 +1,7 @@
 import { Kafka, logLevel } from "kafkajs";
 
 export const kafka = new Kafka({
-  brokers: [process.env.KAFKA_BROKER!],
-  ssl: true,
-  sasl: {
-    mechanism: "scram-sha-256",
-    username: process.env.KAFKA_USERNAME!,
-    password: process.env.KAFKA_PASSWORD!,
-  },
+  brokers: ['localhost:9092'],
   logLevel: logLevel.ERROR,
 });
 
