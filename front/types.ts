@@ -15,7 +15,7 @@ type GroupChatUserType = {
 };
 
 type MessageType = {
-  id: string;
+  id?:string;
   message: string;
   group_id: string;
   name: string;

@@ -1,5 +1,6 @@
 import prisma from "./config/db.config.js";
 import { producer, consumer } from "./config/kafka.config.js";
+import redisClient from "./config/redis.js";
 
 export const produceMessage = async (topic: string, message: any) => {
   await producer.send({
@@ -19,13 +20,23 @@ export const consumeMessages = async (topic: string) => {
         partition,
         offset: message.offset,
         value: data,
+
       });
+      console.log(data)
+         
+      const groupId= data.group_id;
+      const redisKey = `group:${groupId}:chats`;
+
 
       await prisma.chats.create({
         data: data,
       });
-
+      
+      
+      await  redisClient.del(redisKey);
+      
       // Process the message (e.g., save to DB, trigger some action, etc.)
     },
+
   });
 };

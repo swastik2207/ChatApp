@@ -11,6 +11,8 @@ export default async function dashboard() {
   const groups: Array<GroupChatType> | [] = await fetchChatGroups(
     session?.user?.token!
   );
+  console.log(groups);
+  
   return (
     <div>
       <DashNav

@@ -1,17 +1,8 @@
-FROM node:18
+FROM node:20
 
-# Set working directory
 WORKDIR /app
-
-# Install dependencies
 COPY package*.json ./
-RUN npm install
-
-# Copy source files
+RUN apt-get update && apt-get install -y build-essential python3 && npm install
 COPY . .
-
-# Expose port
 EXPOSE 8000
-
-# Start the app
-CMD ["npm", "run","dev"]
+CMD ["npm", "run", "dev"]
