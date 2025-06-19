@@ -14,6 +14,7 @@ export function setupSocket(io: Server) {
     const room = socket.handshake.auth.room;
     const userId = socket.handshake.auth.userId;
 
+
     if (!room || !userId) {
       return next(new Error("Missing room or userId"));
     }
@@ -38,12 +39,16 @@ export function setupSocket(io: Server) {
     );
 
     socket.on("message", async (data) => {
+       socket.to(socket.room!).emit("message", data);
+       console.log(socketToUser )
       try {
+        
+       
         await produceMessage("chats", data);
       } catch (error) {
         console.error(" Kafka produce error:", error);
       }
-      socket.to(socket.room!).emit("message", data);
+   
     });
 
     socket.on("disconnect", () => {

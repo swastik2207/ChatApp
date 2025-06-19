@@ -5,6 +5,7 @@ import ChatGroupController from "../controllers/ChatGroupController.js";
 import authMiddleware from "../middleware/AuthMiddleware.js";
 import ChatGroupUserController from "../controllers/ChatGroupUserController.js";
 import ChatsController from "../controllers/ChatsController.js";
+import S3uploadController from "../controllers/S3uploadController.js";
 
 // Auth Routes
 router.post("/auth/login", AuthController.login);
@@ -22,5 +23,6 @@ router.post("/chat-group-user", ChatGroupUserController.store);
 
 // * Chats
 router.get("/chats/:groupId", ChatsController.index);
+router.post ("/chats/uploadurl",S3uploadController.index);
 
 export default router;

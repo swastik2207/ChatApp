@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState, useEffect, useMemo, Fragment } from "react";
 import ChatNav from "./ChatNav";
 import ChatUserDialog from "./ChatUserDialog";

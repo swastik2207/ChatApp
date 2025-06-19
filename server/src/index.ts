@@ -16,11 +16,12 @@ import { consumeMessages } from "./helper.js";
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [process.env.CLIENT_APP_URL, "https://admin.socket.io"],
+    origin: "http://localhost:3000", // 👈 your frontend origin
+    methods: ["GET", "POST"],
+    credentials: true
   },
   adapter: createAdapter(redis),
 });
-
 instrument(io, {
   auth: false,
   mode: "development",

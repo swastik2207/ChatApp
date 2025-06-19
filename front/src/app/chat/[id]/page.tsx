@@ -1,9 +1,13 @@
-import ChatBase from "@/components/chat/ChatBase";
+
 import { fetchChats } from "@/fetch/chatsFetch";
+import dynamic from "next/dynamic";
 
 import { fetchChatGroup, fetchChatGroupUsers } from "@/fetch/groupFetch";
 import { notFound } from "next/navigation";
 import React from "react";
+const ChatBase = dynamic(() => import("@/components/chat/ChatBase"), {
+  ssr: false,
+});
 
 export default async function chat({ params }: { params: { id: string } }) {
   if (params.id.length !== 36) {

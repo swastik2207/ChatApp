@@ -30,7 +30,7 @@ class ChatsController {
         orderBy: {
           created_at:"desc"//g your table has created_at timestamp
         },
-        take: 10,
+        
       });
 
       // Store in Redis
@@ -39,7 +39,7 @@ class ChatsController {
         chats.forEach((chat) => {
           pipeline.lpush(redisKey, JSON.stringify(chat));
         });
-        pipeline.ltrim(redisKey, 0, 9); // Keep only latest 10
+      //  pipeline.ltrim(redisKey, 0, 9); // Keep only latest 10
         pipeline.expire(redisKey, 60 * 5); // Optional: auto-expire in 5 mins
         await pipeline.exec();
       }

@@ -9,6 +9,7 @@ services:
       - "2181:2181"
     networks:
       - app-net
+  
 
   kafka:
     image: confluentinc/cp-kafka:7.5.0
@@ -39,6 +40,7 @@ services:
     restart: on-failure
     networks:
       - app-net
+    
 
 networks:
   app-net:
