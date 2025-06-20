@@ -24,5 +24,9 @@ router.post("/chat-group-user", ChatGroupUserController.store);
 // * Chats
 router.get("/chats/:groupId", ChatsController.index);
 router.post ("/chats/uploadurl",S3uploadController.index);
+router.get("/get-signed-url",S3uploadController.get);
+router.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 export default router;

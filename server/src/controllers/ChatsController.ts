@@ -45,6 +45,7 @@ class ChatsController {
       }
 
       return res.json({ data: chats, source: "db" });
+
     } catch (err) {
       console.error("Chat Fetch Error:", err);
       return res.status(500).json({ message: "Internal server error" });

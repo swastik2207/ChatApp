@@ -58,8 +58,8 @@ model Chats {
   group_id   String    @db.Uuid
   message    String?
   name       String
-  mediaUrl      String?
-  mediaType    String?
+  mediaUrl   String?
+  mediaType  String?
   created_at DateTime  @default(now())
 
   @@index([created_at])

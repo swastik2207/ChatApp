@@ -1,4 +1,4 @@
-import { SIGNED_URL } from "@/lib/apiAuthRoutes";
+import { SIGNED_URL,GET_IMAGE_URL } from "@/lib/apiAuthRoutes";
 
 export async function UploadFile(file: File) {
   // Create a unique key for the file
@@ -42,4 +42,14 @@ export async function UploadFile(file: File) {
     fileUrl,
     key: uniqueKey, // return key in case you need to delete later
   };
+}
+
+
+export async function GetUrl(fileUrl:string) {
+
+    const res = await fetch(`${GET_IMAGE_URL}?key=${fileUrl}`);
+    const { signedUrl } = await res.json();
+
+    return {signedUrl}
+  
 }

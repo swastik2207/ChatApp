@@ -16,8 +16,8 @@ import { consumeMessages } from "./helper.js";
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", // 👈 your frontend origin
-    methods: ["GET", "POST"],
+    origin: "*", // 👈 your frontend origin
+    methods: ["GET", "POST","PUT", "DELETE"],
     credentials: true
   },
   adapter: createAdapter(redis),

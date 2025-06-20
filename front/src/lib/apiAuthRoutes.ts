@@ -7,3 +7,4 @@ export const CHAT_GROUP = API_URL + "/chat-group";
 export const CHAT_GROUP_USERS = API_URL + "/chat-group-user";
 export const SIGNED_URL=API_URL+"/chats/uploadurl"
 export const CHATS_URL = API_URL + "/chats";
+export const GET_IMAGE_URL=API_URL+"/get-signed-url";
